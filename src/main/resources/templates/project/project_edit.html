@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="common/head.html"></head>
+<body>
+<!-- header 추가 -->
+<div class="container">
+	<div th:insert="common/header.html" id="header"></div>
+	<div class="wrapper">
+
+
+		<article class="table-set">
+			<div class="inner">
+				<div class="table-list-tit">프로젝트 상세</div>
+				<table>
+					<colgroup>
+						<col style="width:200px;">
+						<col style="width:auto;">
+					</colgroup>
+					<tbody>
+					<tr>
+						<th>프로젝트명</th>
+						<td><input class="tbox" th:value="${projectDto.name}"></td>
+					</tr>
+					<tr>
+						<th>상위프로젝트 선택</th>
+						<td>
+							<select>
+								<option>선택</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>상태</th>
+						<td>
+							<select>
+								<option value="">선택</option>
+								<option th:selected="${projectDto.state == '1'}">대기</option>
+								<option th:selected="${projectDto.state == '2'}">진행중</option>
+								<option th:selected="${projectDto.state == '3'}">완료</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>금액</th>
+						<td><input class="tbox" th:value="${projectDto.price}"></td>
+					</tr>
+					<tr>
+						<th>담당자</th>
+						<td>
+							<select>
+								<option>선택</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<th>등록일시</th>
+						<td><span th:text="${#temporals.format(projectDto.createdDate, 'yyyy-MM-dd HH:mm')}"></span></td>
+					</tr>
+					<tr>
+						<th>수정일시</th>
+						<td><span th:text="${#temporals.format(projectDto.modifiedDate, 'yyyy-MM-dd HH:mm')}"></span></td>
+					</tr>
+					</tbody>
+				</table>
+				<div class="table-menu">
+					<a href="javascript:history.back()">취소</a>
+					<a href="javascript:project.update();">수정</a>
+				</div>
+			</div>
+		</article>
+
+	</div>
+</div>
+
+
+<!-- footer 추가 -->
+<div th:insert="common/footer.html" id="footer"></div>
+<script th:src="@{/js/project/project.js}"></script>
+
+
+
+</body>
+</html>

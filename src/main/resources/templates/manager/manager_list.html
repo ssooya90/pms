@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="common/head.html"></head>
+<body>
+<!-- header 추가 -->
+<div class="container">
+	<div th:insert="common/header.html" id="header"></div>
+	<div class="wrapper">
+
+
+		<article class="table-list">
+			<div class="inner">
+				<div class="table-list-tit">담당자 관리
+					<a th:href="${'/manager/reg'}" class="manager-add-btn">신규 등록</a>
+				</div>
+
+				<article class="search__form">
+					<select>
+						<option selected>담당자</option>
+					</select>
+					<input placeholder="검색어 입력">
+					<a href="#none" class="search-btn">검색</a>
+				</article>
+
+				<table>
+					<thead>
+					<tr>
+						<th>NO</th>
+						<th>담당자</th>
+						<th>등록일시</th>
+						<th>메뉴</th>
+					</tr>
+					</thead>
+					<tbody>
+
+					<tr th:each="item : ${managerList}">
+						<td th:text="${itemStat.count}">1</td>
+						<td th:text="${item.managerNm}">신혜욱</td>
+						<td th:text="${#temporals.format(item.createdDate, 'yyyy-MM-dd HH:mm')}"></td>
+						<td><a th:href="@{'/manager/edit/' + ${item.id}}" class="view-btn">상세보기</a></td>
+					</tr>
+
+
+					</tbody>
+				</table>
+				<article class="paging">
+
+					<ul class="pagination"
+						th:with="start=${T(Math).floor(managerList.number/10)*10 + 1},
+                    last=(${start + 9 < managerList.totalPages ? start + 9 : managerList.totalPages})">
+						<li>
+							<a th:href="@{/manager/list(page=0)}" aria-label="First">
+								<span aria-hidden="true">First</span>
+							</a>
+						</li>
+
+						<li th:class="${managerList.first} ? 'disabled'">
+							<a th:href="${managerList.first} ? '#' :@{/manager/list(page=${boardList.number})}"
+							   aria-label="Previous">
+								<span aria-hidden="true">&lt;</span>
+							</a>
+						</li>
+
+						<li th:each="page: ${#numbers.sequence(start, last)}"
+							th:class="${page == managerList.number + 1} ? 'active'">
+							<a th:text="${page}" th:href="@{/manager/list(page=${page} -1)}"></a>
+						</li>
+
+						<li th:class="${managerList.last} ? 'disabled'">
+							<a th:href="${managerList.last} ? '#' : @{/manager/list(page=${managerList.number + 2})}"
+							   aria-label="Next">
+								<span aria-hidden="true">&gt;</span>
+							</a>
+						</li>
+
+						<li>
+							<a th:href="@{/boards(page=${managerList.totalPages -1})}" aria-label="Last">
+								<span aria-hidden="true">Last</span>
+							</a>
+						</li>
+					</ul>
+
+
+					<!--					<ul>-->
+					<!--						<li th:each="pageNum : ${pageList}" th:inline="text">-->
+					<!--							<a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>-->
+					<!--						</li>-->
+					<!--						&lt;!&ndash;						<li><a href="#none" class="current">1</a></li>&ndash;&gt;-->
+					<!--						&lt;!&ndash;						<li><a href="#none">2</a></li>&ndash;&gt;-->
+					<!--						&lt;!&ndash;						<li><a href="#none">3</a></li>&ndash;&gt;-->
+					<!--					</ul>-->
+				</article>
+			</div>
+		</article>
+
+	</div>
+</div>
+
+
+<!-- footer 추가 -->
+<div th:insert="common/footer.html" id="footer"></div>
+
+
+</body>
+</html>

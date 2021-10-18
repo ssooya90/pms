@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="common/head.html"></head>
+<body>
+<!-- header 추가 -->
+<div class="container">
+	<div th:insert="common/header.html" id="header"></div>
+	<div class="wrapper">
+
+
+		<article class="table-set">
+			<div class="inner">
+				<div class="table-list-tit">회원가입</div>
+				<form th:action="@{/sign/signup}" method="post">
+					<table>
+						<colgroup>
+							<col style="width:200px;">
+							<col style="width:auto;">
+						</colgroup>
+						<tbody>
+						<tr>
+							<th>아이디</th>
+							<td><input class="tbox" id="userId"></td>
+						</tr>
+						<tr>
+							<th>비밀번호</th>
+							<td><input class="tbox" id="pw" type="password"></td>
+						</tr>
+						<tr>
+							<th>이름</th>
+							<td><input class="tbox" id="name"></td>
+						</tr>
+						<tr>
+							<th>이메일</th>
+							<td><input class="tbox" id="email"></td>
+						</tr>
+						<tr>
+							<th>기업명</th>
+							<td><input class="tbox" id="corpNm"></td>
+						</tr>
+						<tr>
+							<th>전화번호</th>
+							<td><input class="tbox" id="telNo"></td>
+						</tr>
+						</tbody>
+					</table>
+				</form>
+				<div class="table-menu">
+					<a href="javascript:history.back()">취소</a>
+					<a href="javascript:member.save()">회원가입</a>
+				</div>
+			</div>
+		</article>
+
+	</div>
+</div>
+
+
+<!-- footer 추가 -->
+<div th:insert="common/footer.html" id="footer"></div>
+<script th:src="@{/js/member/member.js}"></script>
+</body>
+</html>

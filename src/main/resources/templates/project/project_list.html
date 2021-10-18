@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="common/head.html"></head>
+<body>
+<!-- header 추가 -->
+<div class="container">
+	<div th:insert="common/header.html" id="header"></div>
+	<div class="wrapper">
+
+
+		<article class="table-list">
+			<div class="inner">
+				<div class="table-list-tit">테이블 타이틀</div>
+
+				<article class="search__form">
+					<select>
+						<option>프로젝트명</option>
+						<option>담당자</option>
+					</select>
+					<input placeholder="검색어 입력">
+					<a href="#none" class="search-btn">검색</a>
+				</article>
+
+				<table>
+					<thead>
+					<tr>
+						<th>NO</th>
+						<th>프로젝트명</th>
+						<th>담당자</th>
+						<th>상태</th>
+						<th>등록일시</th>
+						<th>메뉴</th>
+					</tr>
+					</thead>
+					<tbody>
+
+					<tr th:each="item : ${projectList}">
+						<td>
+							<span th:text="${itemStat.count}"></span>
+						</td>
+						<td>
+							<span th:text="${item.name}"></span>
+						</td>
+						<td></td>
+						<td>
+							<span th:text="${item.stateName}"></span>
+						</td>
+						<td>
+							<span th:text="${#temporals.format(item.createdDate, 'yyyy-MM-dd HH:mm')}"></span>
+						</td>
+						<td>
+							<a th:href="@{'/project/edit/' + ${item.id}}" class="view-btn">상세보기</a>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<article class="paging">
+					<ul>
+						<li th:each="pageNum : ${pageList}" th:inline="text">
+							<a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>
+						</li>
+<!--						<li><a href="#none" class="current">1</a></li>-->
+<!--						<li><a href="#none">2</a></li>-->
+<!--						<li><a href="#none">3</a></li>-->
+					</ul>
+				</article>
+			</div>
+		</article>
+
+	</div>
+</div>
+
+
+<!-- footer 추가 -->
+<div th:insert="common/footer.html" id="footer"></div>
+
+
+</body>
+</html>

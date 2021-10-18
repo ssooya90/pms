@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head th:insert="common/head.html"></head>
+<body xmlns:th="http://www.w3.org/1999/xhtml">
+<!-- header 추가 -->
+
+<style>
+	.social-btn{
+		border:1px solid #ccc;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding:0 5px;
+		height: 25px;
+	}
+
+	.social-btn + .social-btn{
+		margin-left: 10px;
+	}
+</style>
+<div class="container">
+	<div th:insert="common/header.html" id="header"></div>
+	<div class="wrapper">
+
+
+		<article class="table-set">
+			<div class="inner">
+				<div class="table-list-tit">로그인</div>
+				<form action="/login" method="post">
+<!--					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
+					<table>
+						<colgroup>
+							<col style="width:200px;">
+							<col style="width:auto;">
+						</colgroup>
+						<tbody>
+						<tr>
+							<th>아이디</th>
+							<td><input class="tbox" id="username" name="username"></td>
+						</tr>
+						<tr>
+							<th>비밀번호</th>
+							<td><input class="tbox" type="password" id="password" name="password"></td>
+						</tr>
+						<tr>
+							<td colspan="3">
+								<a href="/oauth2/authorization/kakao" class="social-btn">카카오톡 로그인</a>
+								<a href="/oauth2/authorization/naver" class="social-btn">네이버 로그인</a>
+								<a href="#none" class="social-btn">페이스북 로그인</a>
+								<a href="/oauth2/authorization/google" class="social-btn">구글 로그인</a>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</form>
+				<div class="table-menu">
+					<a href="javascript:history.back()">취소</a>
+					<a href="javascript:member.login()">로그인</a>
+				</div>
+
+			</div>
+
+		</article>
+
+	</div>
+</div>
+
+
+<!-- footer 추가 -->
+<div th:insert="common/footer.html" id="footer"></div>
+<script th:src="@{/js/member/member.js}"></script>
+</body>
+</html>

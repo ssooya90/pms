@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="kr" xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:include="/common/head" th:remove="tag"></head>
+
+<body>
+<div class="container">
+	<header th:include="/common/header" th:remove="tag"></header>
+	<div class="contents">
+		<section class="">
+			<div class="inner">
+				<span sec:authentication="name"></span>님 환영합니다~
+
+				<div sec:authorize="hasRole('ROLE_ADMIN')">
+					This content is only shown to administrators.
+				</div>
+				<div sec:authorize="hasRole('ROLE_MEMBER')">
+					This content is only shown to users.
+				</div>
+			</div>
+
+
+
+		</section>
+	</div>
+</div>
+	<script src="/js/member.js"></script>
+</body>
+</html>

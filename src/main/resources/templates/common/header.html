@@ -1,0 +1,21 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<header>
+	<div class="inner">
+		<div class="header__menu">
+			<nav>
+				<ul>
+					<li><a sec:authorize="hasRole('ROLE_MEMBER')" th:href="${'/project/list'}" th:class="${'01' == '01'} ? 'current' : 'off'">프로젝트 관리</a></li>
+					<li><a sec:authorize="hasRole('ROLE_MEMBER')" th:href="${'/project/reg'}" th:class="${#httpServletRequest.requestURI == '/project/reg'} ? 'current' : 'off'">프로젝트 등록</a></li>
+					<li><a sec:authorize="hasRole('ROLE_MEMBER')" th:href="${'/manager/list'}" th:class="${#httpServletRequest.requestURI == '/project/edit'} ? 'current' : 'off'">담당자 관리</a></li>
+				</ul>
+			</nav>
+
+			<div class="header_menu__right">
+				<a sec:authorize="!isAuthenticated()" th:href="${'/sign/signin'}">로그인</a>
+				<a sec:authorize="!isAuthenticated()" th:href="${'/sign/signup'}">회원가입</a>
+				<a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
+			</div>
+		</div>
+
+	</div>
+</header>
