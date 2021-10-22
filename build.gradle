@@ -34,6 +34,10 @@ dependencies {
 
     // oauth
     compile('org.springframework.boot:spring-boot-starter-oauth2-client')
+    compile("org.springframework.boot:spring-boot-starter-security")
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+
+
 
 
     // SPRING BOOT 환경에서 session 저장용..
@@ -52,7 +56,5 @@ dependencies {
     // thymeleaf
     compile ('org.springframework.boot:spring-boot-starter-thymeleaf')
 
-    compile("org.springframework.boot:spring-boot-starter-security")
-    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 }
 
