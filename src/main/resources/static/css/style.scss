@@ -289,3 +289,57 @@ article.table-list{
 	 }
 
 }
+
+article.server-check{
+
+	max-width:1260px;
+	margin:0 auto;
+	background-color: #fff;
+
+	padding:30px;
+
+	.server-list-box{
+
+		.item-box{
+			display: flex;
+			align-items: center;
+			height: 50px;
+
+
+			& + .item-box{
+				border-top:1px solid #ccc;
+			}
+
+			.subject{
+				font-weight: 500;
+				display: inline-flex;
+				width: 200px;
+				font-size: 14px;
+			}
+
+			.con{
+				font-size: 14px;
+				display: inline-flex;
+				width: 100%;
+				flex:1;
+
+				.state-box{
+					display: inline-flex;
+					width: 20px;
+					height: 20px;
+					border-radius: 50%;
+					
+					&.type-ok{
+						background-color: blue;
+					}
+
+					&.type-error{
+						background-color: red;
+					}
+
+				}
+			}
+		}
+	}
+
+}

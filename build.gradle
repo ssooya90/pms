@@ -56,5 +56,10 @@ dependencies {
     // thymeleaf
     compile ('org.springframework.boot:spring-boot-starter-thymeleaf')
 
+
+
+    implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5'
+
+
 }
 

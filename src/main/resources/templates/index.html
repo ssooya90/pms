@@ -6,13 +6,83 @@
 <div class="container">
 	<div th:insert="common/header.html" id="header"></div>
 	<div class="wrapper">
-		<div style="text-align: center; margin-top:100px;">로그인 후 이용이 가능합니다.</div>
+
+		<article class="server-check">
+			<div class="server-list-box"></div>
+		</article>
+
 	</div>
 </div>
 
 
+
+
 <!-- footer 추가 -->
 <div th:insert="common/footer.html" id="footer"></div>
+
+
+<script>
+
+	function test(){
+		$.ajax({
+			url : "/serverCheck",
+			dataType: "JSON",
+			processData:false,
+			contentType: false,
+			success:function (result){
+
+				makeStr(result);
+
+
+			},
+			error : function (result){
+
+				console.log("에러")
+				console.log(result);
+
+			}
+		})
+	}
+
+	function makeStr(result){
+
+		var _str;
+		$('.server-list-box').html("");
+
+		$.each(result,function (index, item){
+
+			_str = "";
+			_str += '<div class="item-box">';
+			_str += '	<div class="subject">' + item.serverName + '</div>';
+			_str += '	<div class="con">';
+			_str += '		<div class="state-box ' + (item.serverState == "정상" ? "type-ok" : "type-error") +'"></div>';
+			_str += '	</div>';
+			_str += '</div>';
+
+			$('.server-list-box').append(_str);
+		});
+
+
+
+
+	}
+
+
+
+	// setInterval(function() {
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	// 	//JSP를 ajax로 호출 후 결과 처리
+	//
+	// }, 5000);    // 5초 polling
+
+</script>
 
 
 </body>
