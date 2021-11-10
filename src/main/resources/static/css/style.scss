@@ -298,7 +298,20 @@ article.server-check{
 
 	padding:30px;
 
+	.server-head-box{
+
+		padding-bottom: 20px;
+		border-bottom:1px solid #ddd;
+
+	}
+
 	.server-list-box{
+		position: relative;
+
+		.loading{
+			margin:0 auto;
+			text-align: center;
+		}
 
 		.item-box{
 			display: flex;

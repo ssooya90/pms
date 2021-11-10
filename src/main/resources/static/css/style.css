@@ -192,30 +192,38 @@ article.server-check {
   margin: 0 auto;
   background-color: #fff;
   padding: 30px; }
-  article.server-check .server-list-box .item-box {
-    display: flex;
-    align-items: center;
-    height: 50px; }
-    article.server-check .server-list-box .item-box + .item-box {
-      border-top: 1px solid #ccc; }
-    article.server-check .server-list-box .item-box .subject {
-      font-weight: 500;
-      display: inline-flex;
-      width: 200px;
-      font-size: 14px; }
-    article.server-check .server-list-box .item-box .con {
-      font-size: 14px;
-      display: inline-flex;
-      width: 100%;
-      flex: 1; }
-      article.server-check .server-list-box .item-box .con .state-box {
+  article.server-check .server-head-box {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd; }
+  article.server-check .server-list-box {
+    position: relative; }
+    article.server-check .server-list-box .loading {
+      margin: 0 auto;
+      text-align: center; }
+    article.server-check .server-list-box .item-box {
+      display: flex;
+      align-items: center;
+      height: 50px; }
+      article.server-check .server-list-box .item-box + .item-box {
+        border-top: 1px solid #ccc; }
+      article.server-check .server-list-box .item-box .subject {
+        font-weight: 500;
         display: inline-flex;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%; }
-        article.server-check .server-list-box .item-box .con .state-box.type-ok {
-          background-color: blue; }
-        article.server-check .server-list-box .item-box .con .state-box.type-error {
-          background-color: red; }
+        width: 200px;
+        font-size: 14px; }
+      article.server-check .server-list-box .item-box .con {
+        font-size: 14px;
+        display: inline-flex;
+        width: 100%;
+        flex: 1; }
+        article.server-check .server-list-box .item-box .con .state-box {
+          display: inline-flex;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%; }
+          article.server-check .server-list-box .item-box .con .state-box.type-ok {
+            background-color: blue; }
+          article.server-check .server-list-box .item-box .con .state-box.type-error {
+            background-color: red; }
 
 /*# sourceMappingURL=style.css.map */

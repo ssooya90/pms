@@ -8,7 +8,21 @@
 	<div class="wrapper">
 
 		<article class="server-check">
-			<div class="server-list-box"></div>
+
+			<div class="server-head-box">
+				<div class="time-box">
+					체크한 시간 : <span class="time"></span>
+				</div>
+
+			</div>
+
+			<div class="server-list-box">
+
+				<div class="loading">
+					<img th:src="@{/img/img_loading.gif}"/>
+				</div>
+
+			</div>
 		</article>
 
 	</div>
@@ -23,15 +37,16 @@
 
 <script>
 
-	function test(){
+	function siteCheck(){
 		$.ajax({
 			url : "/serverCheck",
 			dataType: "JSON",
 			processData:false,
 			contentType: false,
 			success:function (result){
-
+				$('.loading').hide();
 				makeStr(result);
+				timeSet();
 
 
 			},
@@ -42,6 +57,20 @@
 
 			}
 		})
+	}
+
+	function timeSet(){
+		var today = new Date();
+		var hours = today.getHours(); // 시
+		var minutes = today.getMinutes();  // 분
+		var seconds = today.getSeconds();  // 초
+
+		var year = today.getFullYear(); // 년도
+		var month = today.getMonth() + 1;  // 월
+		var date = today.getDate();  // 날짜
+
+
+		$('.time').html(year + "/" + month + "/" + date + " " + hours + ':' + minutes + ':' + seconds)
 	}
 
 	function makeStr(result){
@@ -62,25 +91,14 @@
 			$('.server-list-box').append(_str);
 		});
 
-
-
-
 	}
 
 
+	siteCheck(); // 최초 1회 실행
+	setInterval(function() {
+		siteCheck();
 
-	// setInterval(function() {
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	// 	//JSP를 ajax로 호출 후 결과 처리
-	//
-	// }, 5000);    // 5초 polling
+	}, (60000 * 5));    // 5분마다
 
 </script>
 
