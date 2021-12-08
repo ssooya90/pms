@@ -5,13 +5,14 @@ import pms.domain.member.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import pms.domain.project.Project;
 
 @Getter
 @NoArgsConstructor
 public class ManagerUpdateRequestDto {
 
 	private Long id;
-	private Member member;
+	private Project project;
 	private String managerNm;
 	private String managerTelNo;
 
@@ -25,7 +26,7 @@ public class ManagerUpdateRequestDto {
 	public Manager toEntity(){
 		return Manager.builder()
 				.id(id)
-				.member(member)
+				.project(project)
 				.managerNm(managerNm)
 				.managerTelNo(managerTelNo)
 				.build();

@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import pms.domain.project.Project;
 
 import javax.persistence.*;
 
@@ -21,8 +22,8 @@ public class Manager extends BaseTimeEntity {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "member_id" , updatable = false)
-	private Member member;
+	@JoinColumn(name = "project_id" , updatable = false)
+	private Project project;
 
 	@Column(length = 100, nullable = false)
 	private String managerNm;
@@ -30,11 +31,15 @@ public class Manager extends BaseTimeEntity {
 	@Column(length = 100, nullable = false)
 	private String managerTelNo;
 
+	@Column(length = 100, nullable = false)
+	private String managerPhoneNo;
+
 	@Builder
-	public Manager(Long id, Member member, String managerNm, String managerTelNo) {
+	public Manager(Long id, Project project, String managerNm, String managerTelNo, String managerPhoneNo) {
 		this.id = id;
-		this.member = member;
+		this.project = project;
 		this.managerNm = managerNm;
 		this.managerTelNo = managerTelNo;
+		this.managerPhoneNo = managerPhoneNo;
 	}
 }

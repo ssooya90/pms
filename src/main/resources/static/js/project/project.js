@@ -5,6 +5,13 @@ var project = {
 		var _this = this
 	},
 
+	regPageMove : function () {
+
+
+
+
+	},
+
 	reg : function () {
 
 		var data = {

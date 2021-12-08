@@ -11,6 +11,8 @@ import pms.domain.manager.Manager;
 import pms.domain.manager.ManagerRepository;
 import pms.domain.member.Member;
 import pms.domain.member.MemberRepository;
+import pms.domain.project.Project;
+import pms.domain.project.ProjectRepository;
 import pms.web.manager.dto.ManagerResponseDto;
 import pms.web.manager.dto.ManagerSaveRequestDto;
 import pms.web.manager.dto.ManagerUpdateRequestDto;
@@ -23,15 +25,15 @@ public class ManagerService {
 
 	Logger logger = LoggerFactory.getLogger(ManagerService.class);
 
-	private final MemberRepository memberRepository;
+	private final ProjectRepository projectRepository;
 	private final ManagerRepository managerRepository;
 
 	public Long save(ManagerSaveRequestDto requestDto, Principal principal) {
 
-		Member member = memberRepository.findByUserId(principal.getName()).orElseThrow(() -> new IllegalArgumentException("해당 아이디가 없습니다"));
+//		Project project = projectRepository.findById(principal.getName()).orElseThrow(() -> new IllegalArgumentException("해당 아이디가 없습니다"));
 
 		requestDto = ManagerSaveRequestDto.builder()
-				.member(member)
+				.project(Project.builder().build())
 				.managerNm(requestDto.getManagerNm())
 				.managerTelNo(requestDto.getManagerTelNo())
 				.build();

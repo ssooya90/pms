@@ -3,6 +3,7 @@ package pms.web.manager.dto;
 import lombok.Getter;
 import pms.domain.manager.Manager;
 import pms.domain.member.Member;
+import pms.domain.project.Project;
 
 import java.time.LocalDateTime;
 
@@ -10,7 +11,7 @@ import java.time.LocalDateTime;
 public class ManagerResponseDto {
 
 	private Long id;
-	private Member member;
+	private Project project;
 	private String managerNm;
 	private String managerTelNo;
 	private LocalDateTime createdDate;
@@ -19,7 +20,7 @@ public class ManagerResponseDto {
 
 	public ManagerResponseDto(Manager entity) {
 		this.id = entity.getId();
-		this.member = entity.getMember();
+		this.project = entity.getProject();
 		this.managerNm = entity.getManagerNm();
 		this.managerTelNo = entity.getManagerTelNo();
 		this.createdDate = entity.getCreatedDate();

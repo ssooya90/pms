@@ -288,6 +288,26 @@ article.table-list{
 
 	 }
 
+	.table-menu{
+		margin-top: 20px;
+		display: flex;
+		width: 100%;
+		justify-content: flex-end;
+
+		a{
+			@include text-middle();
+			line-height: 30px;
+			text-align: center;
+			width: 60px;
+			background-color: #3b3b3b;
+			color: #fff;
+
+			& + a{
+				margin-left: 20px;
+			}
+		}
+	}
+
 }
 
 article.server-check{

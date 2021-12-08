@@ -10,7 +10,7 @@
 
 		<article class="table-list">
 			<div class="inner">
-				<div class="table-list-tit">테이블 타이틀</div>
+				<div class="table-list-tit">프로젝트 리스트</div>
 
 				<article class="search__form">
 					<select>
@@ -20,7 +20,6 @@
 					<input placeholder="검색어 입력">
 					<a href="#none" class="search-btn">검색</a>
 				</article>
-
 				<table>
 					<thead>
 					<tr>
@@ -54,6 +53,13 @@
 					</tr>
 					</tbody>
 				</table>
+
+
+				<article class="table-menu">
+					<a th:href="@{'/project/reg'}">등록</a>
+				</article>
+
+
 				<article class="paging">
 					<ul>
 						<li th:each="pageNum : ${pageList}" th:inline="text">
@@ -73,6 +79,8 @@
 
 <!-- footer 추가 -->
 <div th:insert="common/footer.html" id="footer"></div>
+<script th:src="@{/js/project/project.js}"></script>
+
 
 
 </body>
